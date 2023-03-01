@@ -1,5 +1,6 @@
 package hypesofts.owlfonso.domain.question;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -21,7 +22,7 @@ public class QuestionTU {
         // When
         var result = QuestionFactory.create(question);
         // Then
-        assert result.getText().equals(question);
-
+        Assertions.assertThat(result.getText()).isEqualTo(question);
+        Assertions.assertThat(result.getUUID()).isNotNull();
     }
 }
