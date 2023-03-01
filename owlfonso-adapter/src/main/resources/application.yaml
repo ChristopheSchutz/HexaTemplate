@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  liquibase:
+    change-log: classpath:db/changelog.sql
+  profiles:
+    default: local-pg
+
+---
+# Local Environment
+spring:
+  config:
+    activate:
+      on-profile: local-pg
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      mode: always
