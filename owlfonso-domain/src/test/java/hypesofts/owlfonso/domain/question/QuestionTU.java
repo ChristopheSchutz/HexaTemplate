@@ -1,5 +1,6 @@
 package hypesofts.owlfonso.domain.question;
 
+import hypesofts.owlfonso.domain.answer.Answer;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -8,21 +9,29 @@ import org.junit.jupiter.api.TestInstance;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class QuestionTU {
 
-    private QuestionFactory questionFactory;
-
     @BeforeAll
     public void setUp() {
-        questionFactory = new QuestionFactory();
     }
 
     @Test
     void should_create_question() {
         // Given
-        String question = "What is the answer to the Ultimate Question of Life, the Universe, and Everything?";
+        String question = "What is love ?";
         // When
-        var result = QuestionFactory.create(question);
+        Question result = QuestionFactory.create(question);
         // Then
-        Assertions.assertThat(result.getText()).isEqualTo(question);
         Assertions.assertThat(result.getUUID()).isNotNull();
+        Assertions.assertThat(result.getText()).isEqualTo(question);
+    }
+
+    @Test
+    void should_ask_question() {
+        // Given
+        Question question = QuestionFactory.create("What is love ?");
+        // When
+        Answer result = question.ask();
+        // Then
+        Assertions.assertThat(result.getUUID()).isNotNull();
+        Assertions.assertThat(result.getQuestionId()).isEqualTo(question.getId());
     }
 }

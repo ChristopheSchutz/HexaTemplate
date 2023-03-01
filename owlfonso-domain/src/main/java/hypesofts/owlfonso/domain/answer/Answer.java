@@ -1,7 +1,6 @@
-package hypesofts.owlfonso.domain.question;
+package hypesofts.owlfonso.domain.answer;
 
-import hypesofts.owlfonso.domain.answer.Answer;
-import hypesofts.owlfonso.domain.answer.AnswerFactory;
+import hypesofts.owlfonso.domain.question.QuestionId;
 import hypesofts.owlfonso.domain.technical.baseclass.AggregateRoot;
 import hypesofts.owlfonso.domain.technical.baseclass.DomainEntity;
 import lombok.AccessLevel;
@@ -12,17 +11,13 @@ import java.util.UUID;
 
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 @Getter
-public class Question implements AggregateRoot, DomainEntity {
+public class Answer implements AggregateRoot, DomainEntity {
 
-    private final QuestionId id;
-    private final String text;
+    private final AnswerId id;
+    private final QuestionId questionId;
 
     @Override
     public UUID getUUID() {
         return id.getId();
-    }
-
-    public Answer ask() {
-        return AnswerFactory.create(this);
     }
 }

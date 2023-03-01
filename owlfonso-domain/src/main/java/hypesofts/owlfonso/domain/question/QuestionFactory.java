@@ -1,16 +1,14 @@
 package hypesofts.owlfonso.domain.question;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
+import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
 
-@Service
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class QuestionFactory {
 
     public static Question create(String question) {
-        return new Question(question, QuestionId.of(UUID.randomUUID()));
+        return new Question(QuestionId.of(UUID.randomUUID()), question);
     }
 }
