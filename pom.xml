@@ -12,13 +12,13 @@
     </parent>
 
     <groupId>hypesofts</groupId>
-    <artifactId>owlfonso-parent</artifactId>
+    <artifactId>hexatpl-parent</artifactId>
     <version>1.0.0</version>
-    <name>Owlfonso</name>
+    <name>HexaTemplate</name>
 
     <modules>
-        <module>owlfonso-domain</module>
-        <module>owlfonso-adapter</module>
+        <module>hexatpl-domain</module>
+        <module>hexatpl-adapter</module>
     </modules>
 
 
